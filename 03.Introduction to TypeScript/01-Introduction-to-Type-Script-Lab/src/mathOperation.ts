@@ -28,9 +28,9 @@ function mathOperation(num1: number, num2: number, operator: string): void {
   console.log(result);
 }
 
-mathOperation(5, 3, '+');  // Output: 8
+mathOperation(5, 6, '+');  // Output: 11
 mathOperation(5, 3, '-');  // Output: 2
-mathOperation(5, 3, '*');  // Output: 15
+mathOperation(3, 5.5, '*');  // Output: 16.5
 mathOperation(5, 3, '/');  // Output: 1.6666...
 mathOperation(5, 3, '%');  // Output: 2
 mathOperation(5, 3, '**'); // Output: 125
