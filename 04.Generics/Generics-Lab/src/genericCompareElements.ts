@@ -16,7 +16,11 @@ class CompareElements<T> {
 
     //     return count;
 
-    return this.elements.filter((element) => element === comparator).length;
+    //return this.elements.filter((element) => element === comparator).length;
+
+    return this.elements.reduce((count, element) => {
+        return element === comparator ? count + 1 : count;
+    }, 0);
   }
 }
 
