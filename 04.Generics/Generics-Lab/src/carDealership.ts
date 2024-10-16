@@ -21,7 +21,7 @@ class CarDealership<T> implements Dealership<T>, Action<T> {
     }
 
     sellCar(dealerID: T, model: T): void {
-        this.modelsSold[dealerID as unknown as string] = model;
+        this.modelsSold[dealerID as string] = model; // this.modelsSold[String(dealerID)] = model;
         this.numberOfSoldCars += 1;
     }
 
