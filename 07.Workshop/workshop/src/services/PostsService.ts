@@ -8,7 +8,7 @@ export interface Post {
 export class PostsService {
   private apiUrl: string = "https://jsonplaceholder.typicode.com/posts";
 
-  async getAllPosts(): Promise<Post> {
+  async getAllPosts(): Promise<Post[]> {
     const responce = await fetch(this.apiUrl);
     return responce.json();
   }
