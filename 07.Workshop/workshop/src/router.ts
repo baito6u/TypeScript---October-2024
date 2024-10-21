@@ -1,31 +1,27 @@
-type RouteConfig<T> = {
-  path: string;
-  component: () => T;
-};
+// src/router.ts
+type RouteHandler = () => void;
 
-export class Router<T> {
-  private routes: RouteConfig<T>[];
+export class Router {
+  private routes: { [key: string]: RouteHandler } = {};
 
-  constructor() {
-    this.routes = [];
-    window.addEventListener("hashchange", () => this.routeChanged());
+  addRoute(routeName: string, handler: RouteHandler): void {
+    this.routes[routeName] = handler;
   }
 
-  addRoute(path: string, component: () => T) {
-    this.routes.push({ path, component });
-  }
-
-  start() {
-    this.routeChanged(); // Handle initial load
-  }
-
-  private routeChanged() {
-    const currentHash = window.location.hash.slice(1);
-    const route = this.routes.find((r) => r.path === currentHash);
-    if (route) {
-      route.component();
-    } else {
-      console.error("Route not found!");
+  start(): void {
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1);
+      const routeHandler = this.routes[hash];
+      if (routeHandler) {
+        routeHandler();
+      }
+    });
+    
+    // Trigger the route based on the initial URL hash
+    const initialHash = window.location.hash.substring(1);
+    const initialRouteHandler = this.routes[initialHash];
+    if (initialRouteHandler) {
+      initialRouteHandler();
     }
   }
 }
