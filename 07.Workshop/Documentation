@@ -1,0 +1,9 @@
+The app is a Single Page Application (SPA) using TypeScript with Vite, implementing basic CRUD operations with the JSONPlaceholder API. 
+The goal is to practice TypeScript concepts like typing, services, and error handling.
+
+Full Application Overview:
+PostsService.ts and UsersService.ts handle the CRUD operations with the API.
+HtmlRenderer.ts is a reusable class for rendering any data dynamically.
+Posts.ts and Users.ts use the services and the renderer to display the data from the API.
+Router.ts handles the navigation between posts and users.
+This approach ensures that your app is modular, and you can easily reuse the HtmlRenderer class across different components.
