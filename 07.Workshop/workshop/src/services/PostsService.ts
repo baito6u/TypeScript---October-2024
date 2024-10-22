@@ -1,17 +1,33 @@
 import { Post } from "../types/Posts";
+import { GenericService } from "./GenericService"; // assuming this is the path to your GenericService
 
 export class PostsService {
-  private apiUrl: string;
+  private genericService: GenericService<Post>;
 
   constructor() {
-    this.apiUrl = "https://jsonplaceholder.typicode.com/posts";
+    // Initialize GenericService with the API URL for posts
+    this.genericService = new GenericService<Post>("https://jsonplaceholder.typicode.com/posts");
   }
 
-  async fetchPosts(): Promise<Post[]> {
-    const response = await fetch(this.apiUrl);
-    if (!response.ok) {
-      throw new Error("Failed to fetch posts");
-    }
-    return response.json();
+  // Use GenericService's methods
+  fetchPosts(): Promise<Post[]> {
+    return this.genericService.getAll();
+  }
+
+  fetchPostById(id: number): Promise<Post> {
+    return this.genericService.getById(id);
+  }
+
+  createPost(data: Post): Promise<Post> {
+    return this.genericService.create(data);
+  }
+
+  updatePost(id: number, data: Partial<Post>): Promise<Post> {
+    return this.genericService.update(id, data);
+  }
+
+  deletePost(id: number): Promise<void> {
+    return this.genericService.delete(id);
   }
 }
+
