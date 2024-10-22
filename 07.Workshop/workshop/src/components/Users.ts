@@ -12,7 +12,7 @@ export async function renderUsers(): Promise<void> {
         <ul>
           ${users.map(user => `
             <li>
-              <strong>${user.name}</strong> (${user.email}) - ${user.address.city}
+              <strong>${user.name}</strong> (${user.email}) - ${user.username}- ${user.address.city}
             </li>`).join('')}
         </ul>
       `;
