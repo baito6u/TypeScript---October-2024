@@ -1,0 +1,16 @@
+The app is a Single Page Application (SPA) using TypeScript with Vite, implementing basic CRUD operations with the JSONPlaceholder API. 
+The goal is to practice TypeScript concepts like typing, services, and error handling.
+
+1. Overall Structure
+The app consists of several key components:
+
+Services: PostsService and UsersService, which handle API calls to fetch posts and users.
+Components: renderPosts and renderUsers, which render the posts and users to the DOM.
+Routing/Navigation: Basic button-click-based routing to switch between posts and users.
+Error Handling: Typed error handling using TypeScript’s unknown type.
+Vite: A build tool to serve the app in development and production.
+
+he app is a simple TypeScript-based Single Page Application (SPA) that interacts with the JSONPlaceholder API to fetch posts and users. 
+It demonstrates several important TypeScript concepts.
+
+This app provides a great foundation for practicing TypeScript while building a simple web app.
