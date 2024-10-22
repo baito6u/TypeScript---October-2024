@@ -12,7 +12,7 @@ export async function renderPosts(): Promise<void> {
         <ul>
           ${posts
             .map(
-              (post) => `<li><strong>${post.title}</strong>: ${post.body}</li>`
+              (post) => `<li><strong>${post.title}</strong>(${post.userId}): ${post.body}</li>`
             )
             .join("")}
         </ul>
