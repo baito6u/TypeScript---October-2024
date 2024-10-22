@@ -18,9 +18,10 @@ export async function renderPosts(): Promise<void> {
         </ul>
       `;
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     if (app) {
-      app.innerHTML = `<p>Error fetching posts: ${error.message}</p>`;
+      const errorMessage = (error instanceof Error) ? error.message : 'An unknown error occurred';
+      app.innerHTML = `<p>Error fetching posts: ${errorMessage}</p>`;
     }
   }
 }
