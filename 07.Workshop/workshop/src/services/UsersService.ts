@@ -1,17 +1,32 @@
-import { User } from "../types/User";
+import { User } from "../types/Users";
+import { GenericService } from "./GenericService"; // Assuming this is your generic service path
 
 export class UsersService {
-  private apiUrl: string;
+  private genericService: GenericService<User>;
 
   constructor() {
-    this.apiUrl = 'https://jsonplaceholder.typicode.com/users';
+    // Initialize the GenericService with the API URL for users
+    this.genericService = new GenericService<User>("https://jsonplaceholder.typicode.com/users");
   }
 
-  async fetchUsers(): Promise<User[]> {
-    const response = await fetch(this.apiUrl);
-    if (!response.ok) {
-      throw new Error('Failed to fetch users');
-    }
-    return response.json();
+  // Use GenericService's methods
+  fetchUsers(): Promise<User[]> {
+    return this.genericService.getAll();
+  }
+
+  fetchUserById(id: number): Promise<User> {
+    return this.genericService.getById(id);
+  }
+
+  createUser(data: User): Promise<User> {
+    return this.genericService.create(data);
+  }
+
+  updateUser(id: number, data: Partial<User>): Promise<User> {
+    return this.genericService.update(id, data);
+  }
+
+  deleteUser(id: number): Promise<void> {
+    return this.genericService.delete(id);
   }
 }
