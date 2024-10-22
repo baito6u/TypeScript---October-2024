@@ -1,4 +1,3 @@
-// src/components/Users.ts
 import { UsersService } from '../services/UsersService';
 
 export async function renderUsers(): Promise<void> {
@@ -11,14 +10,14 @@ export async function renderUsers(): Promise<void> {
       app.innerHTML = `
         <h1>Users</h1>
         <ul>
-          ${users.slice(0, 5).map(user => `
+          ${users.map(user => `
             <li>
               <strong>${user.name}</strong> (${user.email}) - ${user.address.city}
             </li>`).join('')}
         </ul>
       `;
     }
-  } catch (error) {
+  } catch (error: any) {
     if (app) {
       app.innerHTML = `<p>Error fetching users: ${error.message}</p>`;
     }
