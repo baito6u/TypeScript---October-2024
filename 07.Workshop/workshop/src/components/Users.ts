@@ -17,9 +17,10 @@ export async function renderUsers(): Promise<void> {
         </ul>
       `;
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     if (app) {
-      app.innerHTML = `<p>Error fetching users: ${error.message}</p>`;
+      const errorMessage = (error instanceof Error) ? error.message : 'An unknown error occurred';
+      app.innerHTML = `<p>Error fetching users: ${errorMessage}</p>`;
     }
   }
 }
