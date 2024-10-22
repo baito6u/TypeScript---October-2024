@@ -1,7 +1,6 @@
-// src/main.ts
-import { Router } from './router';
-import { renderPosts } from './components/Posts';
-import { renderUsers } from './components/Users';
+import { Router } from "./router";
+import { renderPosts } from "./components/Posts";
+import { renderUsers } from "./components/Users";
 
 const router = new Router();
 
