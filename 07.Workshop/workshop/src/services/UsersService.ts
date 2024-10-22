@@ -1,4 +1,3 @@
-// src/services/UsersService.ts
 export class UsersService {
   private apiUrl: string;
 
