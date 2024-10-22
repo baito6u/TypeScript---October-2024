@@ -1,3 +1,5 @@
+import { Post } from "../types/Posts";
+
 export class PostsService {
   private apiUrl: string;
 
@@ -5,7 +7,7 @@ export class PostsService {
     this.apiUrl = "https://jsonplaceholder.typicode.com/posts";
   }
 
-  async fetchPosts(): Promise<any[]> {
+  async fetchPosts(): Promise<Post[]> {
     const response = await fetch(this.apiUrl);
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
